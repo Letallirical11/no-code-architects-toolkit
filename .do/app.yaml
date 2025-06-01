@@ -3,7 +3,7 @@ services:
 - name: api
   source_dir: /
   github:
-    repo: tu-usuario/no-code-architects-toolkit
+    repo: Letallirical11/no-code-architects-toolkit
     branch: main
   run_command: gunicorn --bind 0.0.0.0:$PORT --workers $GUNICORN_WORKERS --timeout $GUNICORN_TIMEOUT app:app
   environment_slug: python
