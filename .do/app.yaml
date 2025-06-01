@@ -16,7 +16,7 @@ services:
     http_path: /v1/system/status
   envs:
   - key: API_KEY
-    value: tu_clave_super_secreta_123
+    value: Omar123..
     type: SECRET
   - key: LOCAL_STORAGE_PATH
     value: /tmp
