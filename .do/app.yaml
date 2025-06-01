@@ -1,1 +1,30 @@
-
+name: nca-toolkit
+services:
+- name: api
+  source_dir: /
+  github:
+    repo: tu-usuario/no-code-architects-toolkit
+    branch: main
+  run_command: gunicorn --bind 0.0.0.0:$PORT --workers $GUNICORN_WORKERS --timeout $GUNICORN_TIMEOUT app:app
+  environment_slug: python
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  http_port: 8080
+  routes:
+  - path: /
+  health_check:
+    http_path: /v1/system/status
+  envs:
+  - key: API_KEY
+    value: tu_clave_super_secreta_123
+    type: SECRET
+  - key: LOCAL_STORAGE_PATH
+    value: /tmp
+  - key: MAX_QUEUE_LENGTH
+    value: "10"
+  - key: GUNICORN_WORKERS
+    value: "2"
+  - key: GUNICORN_TIMEOUT
+    value: "600"
+  - key: PORT
+    value: "8080"
