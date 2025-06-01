@@ -1,12 +1,10 @@
 name: nca-toolkit
 services:
 - name: api
-  source_dir: /
-  github:
-    repo: Letallirical11/no-code-architects-toolkit
-    branch: main
-  run_command: gunicorn --bind 0.0.0.0:$PORT --workers $GUNICORN_WORKERS --timeout $GUNICORN_TIMEOUT app:app
-  environment_slug: python
+  image:
+    registry_type: DOCKER_HUB
+    repository: stephengpope/no-code-architects-toolkit
+    tag: latest
   instance_count: 1
   instance_size_slug: basic-xxs
   http_port: 8080
@@ -26,5 +24,3 @@ services:
     value: "2"
   - key: GUNICORN_TIMEOUT
     value: "600"
-  - key: PORT
-    value: "8080"
